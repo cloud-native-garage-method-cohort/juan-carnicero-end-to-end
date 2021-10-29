@@ -4,7 +4,7 @@ metadata:
   name: webhook-receiver
 spec:
   port:
-    targetPort: 3000
+    targetPort: 8080
   to:
     name: el-webhook-receiver
     kind: Service
