@@ -5,7 +5,7 @@ metadata:
 data:
   protocol: https
   host: github.com
-  org: cloud-native-garage-method-cohort
-  repo: juan-carnicero-end-to-end
+  org: jm-carnicero
+  repo: git-ops
   branch: main
   
