@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: 0f5a65dfe5adc5c8eda6519664f911cc82c3e84c
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/juan-carnicero-end-to-end
+  labels:
+    app.kubernetes.io/instance: end-to-end-assignment
+    app.kubernetes.io/name: end-to-end-assignment
+  name: team2-nextjs-frontend
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    app: team2-nextjs-frontend
+    app.kubernetes.io/instance: end-to-end-assignment
+    app.kubernetes.io/name: end-to-end-assignment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: 0f5a65dfe5adc5c8eda6519664f911cc82c3e84c
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/juan-carnicero-end-to-end
+  labels:
+    app: team2-nextjs-frontend
+    app.kubernetes.io/instance: end-to-end-assignment
+    app.kubernetes.io/name: end-to-end-assignment
+  name: team2-nextjs-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: team2-nextjs-frontend
+      app.kubernetes.io/instance: end-to-end-assignment
+      app.kubernetes.io/name: end-to-end-assignment
+  template:
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: 0f5a65dfe5adc5c8eda6519664f911cc82c3e84c
+        app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/juan-carnicero-end-to-end
+      labels:
+        app: team2-nextjs-frontend
+        app.kubernetes.io/instance: end-to-end-assignment
+        app.kubernetes.io/name: end-to-end-assignment
+    spec:
+      containers:
+      - image: quay.io/jm_carnicero/end-to-end-assignment:0f5a65dfe5adc5c8eda6519664f911cc82c3e84c
+        name: nextjs
+        ports:
+        - containerPort: 8888
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: 0f5a65dfe5adc5c8eda6519664f911cc82c3e84c
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/juan-carnicero-end-to-end
+  labels:
+    app.kubernetes.io/instance: end-to-end-assignment
+    app.kubernetes.io/name: end-to-end-assignment
+  name: team2-nextjs-frontend
+spec:
+  to:
+    kind: Service
+    name: team2-nextjs-frontend
