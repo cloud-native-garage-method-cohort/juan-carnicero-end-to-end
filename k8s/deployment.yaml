@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: team2-nextjs-frontend
+  name: end-to-end-assignment
   labels:
-    app: team2-nextjs-frontend
+    app: end-to-end-assignment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: team2-nextjs-frontend
+      app: end-to-end-assignment
   template:
     metadata:
       labels:
-        app: team2-nextjs-frontend
+        app: end-to-end-assignment
     spec:
       containers:
       - name: nextjs
-        image: quay.io/mhillb/placeholder_image:placeholder_tag
+        image: quay.io/jm_carnicero/placeholder_image:placeholder_tag
         ports:
-        - containerPort: 8888
+        - containerPort: 3000

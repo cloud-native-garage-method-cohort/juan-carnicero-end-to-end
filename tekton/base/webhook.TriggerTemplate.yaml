@@ -1,24 +1,24 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: webhook-receiver-frontend
+  name: webhook-receiver
 spec:
   resourcetemplates:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: team2-nextjs-frontend-
+      generateName: end-to-end-assignment-
     spec:
       params:
       - name: app-name
-        value: "team2-nextjs-frontend"
+        value: "end-to-end-assignment"
       - name: source-repo
-        value: "https://github.com/jm-carnicero/bootcamp_frontend"
+        value: "https://github.com/cloud-native-garage-method-cohort/juan-carnicero-end-to-end"
       - name: image-repo
-        value: "quay.io/mhillb/team2-nextjs-frontend"
+        value: "quay.io/jm_carnicero/end-to-end-assignment"
       pipelineRef:
-        name: team2-nextjs-frontend
-      serviceAccountName: build-bot
+        name: end-to-end-assignment
+      serviceAccountName: build-robot
       workspaces:
       - name: pipeline-shared-data
         volumeClaimTemplate:
@@ -38,4 +38,5 @@ spec:
                 storage: 1Gi
       - name: git-credentials
         secret:
-          secretName: git-credentials-frontend
+          secretName: git-credentials
+

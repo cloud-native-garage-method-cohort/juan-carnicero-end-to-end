@@ -1,11 +1,11 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: webhook-receiver-frontend
+  name: webhook-receiver
 spec:
   port:
-    targetPort: 8080
+    targetPort: 3000
   to:
-    name: el-webhook-receiver-frontend
+    name: el-webhook-receiver
     kind: Service
     weight: 100

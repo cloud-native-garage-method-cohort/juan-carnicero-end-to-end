@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: build-robot
+subjects:
+- kind: ServiceAccount
+  name: build-robot
+roleRef:
+  kind: Role
+  name: build-robot
